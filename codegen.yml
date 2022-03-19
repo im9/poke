@@ -1,0 +1,10 @@
+overwrite: true
+schema: "https://graphql-pokemon2.vercel.app" # GraphiQL
+generates:
+  ./src/@types/types.d.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations" # fquery や mutation で使用する Operation 型定義の生成
+  ./schema.graphql: # schema.graphql を Document から生成
+    plugins:
+      - schema-ast

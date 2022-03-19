@@ -1,18 +1,22 @@
-import { useEffect } from 'react'
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Layout from "../components/Layout";
+import { SearchForm } from "../components/SearchForm";
+import { SearchResultField } from "../components/SearchResultField";
 
 const IndexPage = () => {
+  const [pokemonName, setpokemonName] = useState("");
+
   useEffect(() => {
     // add a listener to 'message' channel
-    global.ipcRenderer.addListener('message', (_event, args) => {
-      alert(args)
-    })
-  }, [])
+    global.ipcRenderer.addListener("message", (_event, args) => {
+      alert(args);
+    });
+  }, []);
 
   const onSayHiClick = () => {
-    global.ipcRenderer.send('message', 'hi from next')
-  }
+    global.ipcRenderer.send("message", "hi from next");
+  };
 
   return (
     <Layout title="Home | Next.js + TypeScript + Electron Example">
@@ -22,9 +26,11 @@ const IndexPage = () => {
         <Link href="/about">
           <a>About</a>
         </Link>
+        <SearchForm setpokemonName={setpokemonName}></SearchForm>
+        <SearchResultField pokemonName={pokemonName} />
       </p>
     </Layout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
