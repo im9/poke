@@ -9,12 +9,12 @@ type PropType = {
 const SearchResultField = ({ pokemonName }) => {
   const { loading, error, data } = useQuery<Query>(searchPokemon, {
     variables: { name: pokemonName },
-  }); // 変更
+  });
 
-  if (!pokemonName) return <></>; // 追加
+  if (!pokemonName) return <></>;
   if (loading) return <>Loading...</>;
   if (error) return <>Error! {error.message}</>;
-  if (!data || !data.pokemon) return <>No Data.</>; // 追加
+  if (!data || !data.pokemon) return <>No Data.</>;
 
   return (
     <div>

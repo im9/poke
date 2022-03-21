@@ -1,5 +1,6 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import Link from "next/link";
+import Layout from "../components/Layout";
+import { SearchList } from "../components/SearchList";
 
 const AboutPage = () => (
   <Layout title="About | Next.js + TypeScript + Electron Example">
@@ -10,7 +11,8 @@ const AboutPage = () => (
         <a>Go home</a>
       </Link>
     </p>
+    <SearchList limit={100} />
   </Layout>
-)
+);
 
-export default AboutPage
+export default AboutPage;

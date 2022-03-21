@@ -9,3 +9,13 @@ export const searchPokemon = gql`
     }
   }
 `;
+
+export const searchPokemons = gql`
+  query searchPokemons($first: Int!) {
+    pokemons(first: $first) {
+      number
+      name
+      image
+    }
+  }
+`;

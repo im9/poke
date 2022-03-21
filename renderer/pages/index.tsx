@@ -23,8 +23,8 @@ const IndexPage = () => {
       <h1>Hello Next.js 👋</h1>
       <button onClick={onSayHiClick}>Say hi to electron</button>
       <p>
-        <Link href="/about">
-          <a>About</a>
+        <Link href="/list">
+          <a>List</a>
         </Link>
         <SearchForm setpokemonName={setpokemonName}></SearchForm>
         <SearchResultField pokemonName={pokemonName} />

@@ -12,6 +12,9 @@
 /renderer/.next/
 /renderer/out/
 
+/.next/
+/out/
+
 # production
 /main
 /dist
