@@ -6,7 +6,7 @@ type PropType = {
   pokemonName: string;
 };
 
-const SearchResultField = ({ pokemonName }) => {
+const SearchResultField = ({ pokemonName }: PropType) => {
   const { loading, error, data } = useQuery<Query>(searchPokemon, {
     variables: { name: pokemonName },
   });

@@ -1,16 +1,16 @@
 import { FormEvent, useRef } from "react";
 
 type PropType = {
-  setpokemonName: React.Dispatch<React.SetStateAction<string>>;
+  setPokemonName: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const SearchForm: React.FC<PropType> = ({ setpokemonName }) => {
+const SearchForm: React.FC<PropType> = ({ setPokemonName }) => {
   const ref = useRef<HTMLInputElement>(null);
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
     if (ref !== null && ref.current !== null) {
-      setpokemonName(ref.current.value);
+      setPokemonName(ref.current.value);
     }
   };
 

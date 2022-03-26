@@ -1,35 +1,27 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import Layout from '../components/Layout'
-import List from '../components/List'
-import { User } from '../interfaces'
-import { findAll } from '../utils/sample-api'
+import Link from "next/link";
+import Layout from "../components/Layout";
+import { useQuery } from "@apollo/client";
+import { Query } from "../../src/@types/types";
+import { searchPokemons } from "../../src/graphql/queries";
 
-type Props = {
-  items: User[]
-  pathname: string
-}
-
-const WithInitialProps = ({ items }: Props) => {
-  const router = useRouter()
+const WithInitialProps = () => {
   return (
-    <Layout title="List Example (as Function Component) | Next.js + TypeScript + Electron Example">
-      <h1>List Example (as Function Component)</h1>
-      <p>You are currently on: {router.pathname}</p>
-      <List items={items} />
+    <Layout title="Poke">
       <p>
         <Link href="/">
           <a>Go home</a>
         </Link>
       </p>
     </Layout>
-  )
-}
+  );
+};
 
 export async function getStaticProps() {
-  const items: User[] = await findAll()
+  const { data } = useQuery<Query>(searchPokemons, {
+    variables: { first: 200 },
+  });
 
-  return { props: { items } }
+  return { props: { items: data } };
 }
 
-export default WithInitialProps
+export default WithInitialProps;

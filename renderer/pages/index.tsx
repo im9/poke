@@ -1,33 +1,25 @@
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useState } from "react";
+import styled from "styled-components";
 import Layout from "../components/Layout";
 import { SearchForm } from "../components/SearchForm";
 import { SearchResultField } from "../components/SearchResultField";
+import { SearchList } from "../components/SearchList";
+
+const SearchFormContainer = styled.div`
+  margin: 40px;
+`;
 
 const IndexPage = () => {
-  const [pokemonName, setpokemonName] = useState("");
-
-  useEffect(() => {
-    // add a listener to 'message' channel
-    global.ipcRenderer.addListener("message", (_event, args) => {
-      alert(args);
-    });
-  }, []);
-
-  const onSayHiClick = () => {
-    global.ipcRenderer.send("message", "hi from next");
-  };
+  const [pokemonName, setPokemonName] = useState("");
 
   return (
-    <Layout title="Home | Next.js + TypeScript + Electron Example">
-      <button onClick={onSayHiClick}>Say hi to electron</button>
-      <p>
-        <Link href="/list">
-          <a>List</a>
-        </Link>
-        <SearchForm setpokemonName={setpokemonName}></SearchForm>
-        <SearchResultField pokemonName={pokemonName} />
-      </p>
+    <Layout title="Pokemon Zukan">
+      <h1>Pokemon Zukan</h1>
+      <SearchFormContainer>
+        <SearchForm setPokemonName={setPokemonName} />
+      </SearchFormContainer>
+      <SearchResultField pokemonName={pokemonName} />
+      <SearchList limit={200} />
     </Layout>
   );
 };
