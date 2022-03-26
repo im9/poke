@@ -8,13 +8,12 @@ const Cards = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin: 0 auto;
-  width: 96vw;
+  margin: 0 0.25vw calc((30 / 1280) * 100vw) 0.25vw;
 `;
 
 const Card = styled.li`
   list-style: none;
-  margin: 0 0.25vw calc((30 / 1280) * 100vw) 0.25vw;
+  margin: 0.25vw;
 `;
 
 const CardFigure = styled.figure`
@@ -36,7 +35,7 @@ type PropType = {
   limit: number;
 };
 
-const SearchList = ({ limit }: PropType) => {
+const SearchResultList = ({ limit }: PropType) => {
   const { loading, error, data } = useQuery<Query>(searchPokemons, {
     variables: { first: limit },
   });
@@ -67,4 +66,4 @@ const SearchList = ({ limit }: PropType) => {
 
   return <Cards>{pokemonList}</Cards>;
 };
-export { SearchList };
+export { SearchResultList };

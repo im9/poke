@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Layout from "../components/Layout";
 import { SearchForm } from "../components/SearchForm";
 import { SearchResultField } from "../components/SearchResultField";
-import { SearchList } from "../components/SearchList";
+import { SearchResultList } from "../components/SearchResultList";
 
 const SearchFormContainer = styled.div`
   margin: 40px;
@@ -14,12 +14,11 @@ const IndexPage = () => {
 
   return (
     <Layout title="Pokemon Zukan">
-      <h1>Pokemon Zukan</h1>
       <SearchFormContainer>
         <SearchForm setPokemonName={setPokemonName} />
       </SearchFormContainer>
       <SearchResultField pokemonName={pokemonName} />
-      <SearchList limit={200} />
+      <SearchResultList limit={151} />
     </Layout>
   );
 };
