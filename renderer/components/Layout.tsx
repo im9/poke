@@ -13,8 +13,9 @@ const Header = styled.header`
   max-height: 80px;
 `;
 
-const Container = styled.div`
+const Container = styled.body`
   margin: 0;
+  padding: 0;
 `;
 
 type Props = {
